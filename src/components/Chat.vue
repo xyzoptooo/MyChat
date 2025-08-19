@@ -2,43 +2,43 @@
   <div class="chat-container">
     <div class="chat-header">
       <h2>Socket.IO Chat</h2>
-  <div v-if="!username" class="username-input">
-    <input 
-      v-model="tempUsername" 
-      @keyup.enter="joinChat"
-      placeholder="Enter your username"
-      class="username-field"
-    />
-    <button @click="joinChat" class="join-btn">Join Chat</button>
-  </div>
-  <div v-else class="user-info">
-    <span>Welcome, {{ username }}!</span>
-    <button @click="leaveChat" class="leave-btn">Leave</button>
-  </div>
+      <div v-if="!username" class="username-input">
+        <input 
+          v-model="tempUsername" 
+          @keyup.enter="joinChat"
+          placeholder="Enter your username"
+          class="username-field"
+        />
+        <button @click="joinChat" class="join-btn">Join Chat</button>
+      </div>
+      <div v-else class="user-info">
+        <span>Welcome, {{ username }}!</span>
+        <button @click="leaveChat" class="leave-btn">Leave</button>
+      </div>
     </div>
 
     <div class="chat-messages" ref="messagesContainer">
-  <div 
-    v-for="message in messages" 
-    :key="message.id"
-    :class="['message', message.username === username ? 'own-message' : 'other-message']"
-  >
-    <div class="message-header">
-      <span class="username">{{ message.username }}</span>
-      <span class="timestamp">{{ message.timestamp }}</span>
-    </div>
-    <div class="message-content">{{ message.message }}</div>
-  </div>
+      <div 
+        v-for="message in messages" 
+        :key="message.id"
+        :class="['message', message.username === username ? 'own-message' : 'other-message']"
+      >
+        <div class="message-header">
+          <span class="username">{{ message.username }}</span>
+          <span class="timestamp">{{ message.timestamp }}</span>
+        </div>
+        <div class="message-content">{{ message.message }}</div>
+      </div>
     </div>
 
     <div v-if="username" class="chat-input">
-  <input 
-    v-model="newMessage" 
-    @keyup.enter="sendMessage"
-    placeholder="Type a message..."
-    class="message-input"
-  />
-  <button @click="sendMessage" class="send-btn">Send</button>
+      <input 
+        v-model="newMessage" 
+        @keyup.enter="sendMessage"
+        placeholder="Type a message..."
+        class="message-input"
+      />
+      <button @click="sendMessage" class="send-btn">Send</button>
     </div>
   </div>
 </template>
@@ -191,6 +191,40 @@ const scrollToBottom = () => {
   background: #f8f9fa;
 }
 
+.message {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  max-width: 70%;
+}
+
+.own-message {
+  background: #007bff;
+  color: white;
+  margin-left: auto;
+}
+
+.other-message {
+  background: #e9ecef;
+  color: #333;
+  margin-right: auto;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.timestamp {
+  color: #666;
+}
+
 .chat-input {
   display: flex;
   gap: 0.5rem;
@@ -207,37 +241,4 @@ const scrollToBottom = () => {
 .send-btn:hover {
   background: #0056b3;
 }
-
-.send-btn:hover {
-  background: #0056b3;
-}
-
-.send-btn:hover {
-  background: #0056b3;
-}
-
-.send-btn:hover {
-  background: #0056b3;
-}
-
-.send-btn:hover {
-  background: #0056b3;
-}
-
-.send-btn:hover {
-  background: #0056b3;
-}
-
-  padding: 1rem;
-  background: white;
-  border-top: 1px solid #ddd;
-}
-
-.send-btn {
-  background: #007bff;
-  color: white;
-}
-
-.send-btn:hover {
-  background: #0056b3;
-}
+</style>
