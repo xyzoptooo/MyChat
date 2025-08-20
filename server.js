@@ -23,7 +23,7 @@ const users = {};
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
 
-  // Handle user joining
+  // Handle user joining to the chat room
   socket.on('join', (username) => {
     users[socket.id] = username;
     socket.broadcast.emit('userJoined', username);
